@@ -1,2 +1,0 @@
-oauth2
-requests >= 1.0.0
