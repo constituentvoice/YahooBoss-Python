@@ -4,7 +4,7 @@ import os
 
 setup(
 	name='YahooBoss-Python',
-	version='0.1.4',
+	version='0.1.5',
 	author='Constituent Voice',
 	author_email='opensource@constituentvoice.com',
 	packages=['yahooboss'],
@@ -13,6 +13,6 @@ setup(
 	url='https://github.com/constituentvoice/YahooBoss-Python',
 	license='BSD',
 	description='Simple wrapper around the Yahoo Boss API (https://developer.yahoo.com/boss/search/)',
-	long_description=open('README.txt').read(),
+	long_description=open('README.rst').read(),
 	install_requires=["oauth2","requests >= 1.0.0"]
 )

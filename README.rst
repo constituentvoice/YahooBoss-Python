@@ -1,19 +1,27 @@
+================
 YahooBoss-Python
 ================
 
 Simple Wrapper Around the Yahoo Boss Search API
+
 See https://developer.yahoo.com/boss/search/
 
-## YahooBoss
+---------
+YahooBoss
+---------
 
 Base class. Should not be called directly.
 
-
-## PlaceFinder
+-----------
+PlaceFinder
+-----------
 
 Use PlaceFinder to locate an address or place
 
-### Usage
+Usage
+=====
+
+.. code-block:: python
 
 	from yahooboss import PlaceFinder
 
@@ -23,26 +31,31 @@ Use PlaceFinder to locate an address or place
 	longitude = results[0].get('longitude')
 
 
-### Methods
+Methods
+=======
 
-#### `__init__( key, secret )`
+`__init__( key, secret )`
+-------------------------
 
-Extends `YahooBoss`, returns a `PlaceFinder` object
+Extends ``YahooBoss``, returns a ``PlaceFinder`` object
 
 Arguments:
 
- * _key_ - YahooBoss oAuth key.
- * _secret_ - YahooBoss oAuth secret
+- `key`- YahooBoss oAuth key.
+- `secret` - YahooBoss oAuth secret
 
-#### `placefinder( place )`
+`placefinder( place )`
+----------------------
 
 Accepts an address or place name and returns a validated address and geocode
 
 Arguments:
 
- * _place_ - Address or place name
+- `place` - Address or place name
 
-Returns `dict`
+Returns ``dict``
+
+.. code-block:: python
 
 	{
 		"count": "1",
@@ -84,12 +97,16 @@ Returns `dict`
 		]
 	}
 
-
-## BossSearch
+----------
+BossSearch
+----------
 
 Use BossSearch to search the web or news articles
 
-### Usage
+Usage
+=====
+
+.. code-block:: python
 
 	from yahooboss import BossSearch
 	bs = BossSearch(your_key, your_secret)
@@ -111,33 +128,38 @@ Use BossSearch to search the web or news articles
 		print 'URL: %s' % r.get('url')
 
 
-### Methods
+Methods
+=======
 
-#### `__init__(key, secret, **kwargs)`
+`__init__(key, secret, **kwargs)`
+---------------------------------
 
-Extends YahooBoss, returns a `BossSearch` object
+Extends YahooBoss, returns a ``BossSearch`` object
 
 Arguments
 
- * _key_ - YahooBoss oAuth key
- * _secret_ - YahooBoss oAuth secret
+- `key` - YahooBoss oAuth key
+- `secret` - YahooBoss oAuth secret
 
 Keyword arguments:
 
- * _age_ - Max age of the results (e.g. "7d". See the Search BOSS documentation for a complete list)
- * _urls_ - list of urls to search. (Can be partial urls, see the BOSS documentation)
- * _results_per_page_ - number of results per page (or per request)
+- `age` - Max age of the results (e.g. "7d". See the Search BOSS documentation for a complete list)
+- `urls` - list of urls to search. (Can be partial urls, see the BOSS documentation)
+- `results_per_page` - number of results per page (or per request)
 
-#### `search_web(query, page_num=1)`
+`search_web(query, page_num=1)`
+-------------------------------
 
 Searches the web for the specified query and returns a list of results
 
 Arguments:
 
- * _query_ - the query string to search for
- * _page_num_ - start at page (default: 1)
+- `query` - the query string to search for
+- `page_num` - start at page (default: 1)
 
-Returns a list of `dict` results:
+Returns a list of ``dict`` results:
+
+.. code-block:: python
 
 	[{
 		"dispurl": "starwars.wikia.com/wiki/<b>Yoda</b>",
@@ -148,15 +170,18 @@ Returns a list of `dict` results:
 		"date": ""
 	}]
 
-#### `search_news(query,page_num=1)`
+`search_news(query,page_num=1)`
+-------------------------------
 
 Search Yahoo News for the specified query
 
 Arguments:
- * _query_ - string to search for
- * _page_num_ - start at page (default: 1)
+- `query` - string to search for
+- `page_num` - start at page (default: 1)
 
-Returns a list of `dict` results:
+Returns a list of ``dict`` results:
+
+.. code-block:: python
 
 	[{
 		"sourceurl": "http://abcnews.go.com/",
@@ -170,30 +195,37 @@ Returns a list of `dict` results:
 	}]
 
 
-#### `make_request(bucket, query, page_num)`
+`make_request(bucket, query, page_num)`
+---------------------------------------
 
 Used internally to make a raw request to YahooBoss services. Can be used to make a request
 to one of the services not currently covered by a wrapper function.
 
 Arguments:
 
- * _bucket_ - yahoo service bucket (e.g. "news")
- * _query_ - query string to search
- * _page_num_ - page to start at
+- `bucket` - yahoo service bucket (e.g. "news")
+- `query` - query string to search
+- `page_num` - page to start at
 
 Returns a list of dicts. The structure of the dict depends on the return value from Yahoo
 
-## TODO
+----
+TODO
+----
 
 The module currently does not support Yahoo's "LimitedWeb", "Images", "Spelling" or "Related Search".
 
-These can be requested via the `BossSearch.make_request` method
+These can be requested via the ``BossSearch.make_request`` method
 
-## Author
+------
+Author
+------
 
 ConstituentVoice - opensource@constituentvoice.com
 
-## Copyright  / Legal
+-----------------
+Copyright / Legal
+-----------------
 
 Use of this module requires YahooBoss credentials and agreement to Yahoo Inc.'s Terms of Service
 
@@ -201,4 +233,8 @@ Yahoo, YahooBoss, BossSearch, and PlaceFinder are trademarks and property of Yah
 
 ConstituentVoice is not affiliated in any way with Yahoo Inc.
 
-&copy; 2014 ConstituentVoice
+This software is licensed under the terms of the BSD License. It is provided to you free to modify
+or redistribute but with NO WARRANTY. See LICENSE.txt for details.
+
+Copyright (c) 2014 ConstituentVoice
+
