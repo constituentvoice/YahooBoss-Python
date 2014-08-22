@@ -1,0 +1,11 @@
+0.1.0 
+	- Initial release
+	- Placefinder works
+0.1.1
+	- Fixed crash in BossSearch.__init__()
+0.1.2
+	- Fixed crash in BossSearch.__init__() (again)
+	- search_web() and search_news() works
+0.1.3
+	- Wrote docs
+	- Updated a few things for distribution
