@@ -9,3 +9,5 @@
 0.1.3
 	- Wrote docs
 	- Updated a few things for distribution
+0.1.4
+	- Fixed incorrect version in setup.py
