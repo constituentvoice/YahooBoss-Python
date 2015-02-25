@@ -21,7 +21,7 @@ Use PlaceFinder to locate an address or place
 Usage
 =====
 
-.. code-block:: python
+::
 
 	from yahooboss import PlaceFinder
 
@@ -55,7 +55,7 @@ Arguments:
 
 Returns ``dict``
 
-.. code-block:: python
+::
 
 	{
 		"count": "1",
@@ -106,7 +106,7 @@ Use BossSearch to search the web or news articles
 Usage
 =====
 
-.. code-block:: python
+::
 
 	from yahooboss import BossSearch
 	bs = BossSearch(your_key, your_secret)
@@ -149,7 +149,7 @@ Keyword arguments:
 - `sites` - list or comma separated string of sites. BOSS seems to be using this in favor of urls.
 
 `search_web(query, page_num=1,**kwargs)`
--------------------------------
+----------------------------------------
 
 Searches the web for the specified query and returns a list of results
 
@@ -164,7 +164,7 @@ Keyword arguments:
 
 Returns a list of ``dict`` results:
 
-.. code-block:: python
+::
 
 	[{
 		"dispurl": "starwars.wikia.com/wiki/<b>Yoda</b>",
@@ -176,7 +176,7 @@ Returns a list of ``dict`` results:
 	}]
 
 `search_news(query,page_num=1,**kwargs)`
--------------------------------
+----------------------------------------
 
 Search Yahoo News for the specified query
 
@@ -191,7 +191,7 @@ Keyword arguments:
 
 Returns a list of ``dict`` results:
 
-.. code-block:: python
+::
 
 	[{
 		"sourceurl": "http://abcnews.go.com/",
