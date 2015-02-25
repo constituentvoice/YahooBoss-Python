@@ -23,25 +23,43 @@ class BossSearch(YahooBoss):
 
 		self.params = {
 			'oauth_version': "1.0",
-			'count': kwargs.get('results_per_page', 50),
 			'format': 'json'
 		}
 
+		self._set_params(**kwargs)
+
+	
+	def _set_params( self, **kwargs ):
+		self.params['count'] = kwargs.get('results_per_page',50)
+		self.age = kwargs.get('age', '7d')
 		self.age = kwargs.get('age','7d')
 		self.urls = kwargs.get('urls',[])
 
 		if self.urls:
 			param_str = ")OR(".join(self.urls)
 			self.params['url'] = "(" + param_str + ")"
-
-	def search_news(self,q,page_num=1):
 		
+		# looks like Yahoo is going away from urls and uses "sites" now
+		if kwargs.get('sites'):
+			sites = kwargs.get('sites')
+
+			if isinstance(sites, list ):
+				self.params['sites'] = ','.join(sites)
+			else:
+				self.params['sites'] = sites
+
+	def search_news(self,q,page_num=1,**kwargs):
+		
+		self._set_params(**kwargs)
+
 		start = (page_num - 1) * self.params.get('count')
 
 		return self.make_request('news',q, start)
 
 
-	def search_web(self, q, page_num=1 ):
+	def search_web(self, q, page_num=1,**kwargs ):
+		self._set_params(**kwargs)
+
 		start = (page_num - 1) * self.params.get('count')
 		return self.make_request('web',q,start)
 

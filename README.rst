@@ -146,8 +146,9 @@ Keyword arguments:
 - `age` - Max age of the results (e.g. "7d". See the Search BOSS documentation for a complete list)
 - `urls` - list of urls to search. (Can be partial urls, see the BOSS documentation)
 - `results_per_page` - number of results per page (or per request)
+- `sites` - list or comma separated string of sites. BOSS seems to be using this in favor of urls.
 
-`search_web(query, page_num=1)`
+`search_web(query, page_num=1,**kwargs)`
 -------------------------------
 
 Searches the web for the specified query and returns a list of results
@@ -156,6 +157,10 @@ Arguments:
 
 - `query` - the query string to search for
 - `page_num` - start at page (default: 1)
+
+Keyword arguments:
+
+- Same arguments as passed to `__init__()`
 
 Returns a list of ``dict`` results:
 
@@ -170,14 +175,19 @@ Returns a list of ``dict`` results:
 		"date": ""
 	}]
 
-`search_news(query,page_num=1)`
+`search_news(query,page_num=1,**kwargs)`
 -------------------------------
 
 Search Yahoo News for the specified query
 
 Arguments:
+
 - `query` - string to search for
 - `page_num` - start at page (default: 1)
+
+Keyword arguments:
+
+- same arguments as passed to `__init__()`
 
 Returns a list of ``dict`` results:
 
@@ -213,7 +223,7 @@ Returns a list of dicts. The structure of the dict depends on the return value f
 TODO
 ----
 
-The module currently does not support Yahoo's "LimitedWeb", "Images", "Spelling" or "Related Search".
+The module currently does not support Yahoo's "LimitedWeb", "Images", "Spelling", "Blogs" or "Related Search".
 
 These can be requested via the ``BossSearch.make_request`` method
 
@@ -236,5 +246,5 @@ ConstituentVoice is not affiliated in any way with Yahoo Inc.
 This software is licensed under the terms of the BSD License. It is provided to you free to modify
 or redistribute but with NO WARRANTY. See LICENSE.txt for details.
 
-Copyright (c) 2014 ConstituentVoice
+Copyright (c) 2015 ConstituentVoice
 

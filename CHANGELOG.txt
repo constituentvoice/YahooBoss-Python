@@ -11,3 +11,9 @@
 	- Updated a few things for distribution
 0.1.4
 	- Fixed incorrect version in setup.py
+
+0.1.5
+	-
+0.1.6
+	- Added "sites" parameter
+	- updated search_web() and search_news() to accept kwargs directly
