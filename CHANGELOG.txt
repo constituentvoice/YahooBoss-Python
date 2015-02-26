@@ -17,3 +17,8 @@
 0.1.6
 	- Added "sites" parameter
 	- updated search_web() and search_news() to accept kwargs directly
+
+0.2.0
+	- Updated to 0.2.0 due to new features
+	- added reverse() method to placefinder
+	- cleaned up placefinder class

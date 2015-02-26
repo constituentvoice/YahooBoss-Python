@@ -4,7 +4,7 @@ import os
 
 setup(
 	name='YahooBoss-Python',
-	version='0.1.6',
+	version='0.2.0',
 	author='Constituent Voice',
 	author_email='opensource@constituentvoice.com',
 	packages=['yahooboss'],
