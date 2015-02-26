@@ -21,14 +21,31 @@ Use PlaceFinder to locate an address or place
 Usage
 =====
 
+Find the coordinates of a place o address
+
 ::
 
 	from yahooboss import PlaceFinder
 
 	pf = Placefinder(your_key,your_secret)
-	results = pf.placefinder( 'Address or Place Name' )
+	results = pf.lookup( 'Address or Place Name' )
 	latitude = results[0].get('latitude')
 	longitude = results[0].get('longitude')
+
+
+Find an address by latitude and longitude
+
+::
+
+	from yahooboss import PlaceFinder
+	pf = Placefinder(your_key, your_secret)
+	results = pf.reverse( lat, lon )
+	address = results[0]
+
+	street = address.get('line1')
+	city = address.get('city')
+	state = address.get('state') # or address.get('statecode') for the abbreviation
+	zip = address.get('uzip')
 
 
 Methods
@@ -44,7 +61,7 @@ Arguments:
 - `key`- YahooBoss oAuth key.
 - `secret` - YahooBoss oAuth secret
 
-`placefinder( place )`
+`lookup( place )`
 ----------------------
 
 Accepts an address or place name and returns a validated address and geocode
@@ -96,6 +113,17 @@ Returns ``dict``
 			}
 		]
 	}
+
+`reverse( lat, lon )`
+---------------------
+
+Finds an address based on the given coordinates.
+
+`placefinder( place )`
+----------------------
+
+Alias for `lookup()` to remain compatible with 0.1.x
+
 
 ----------
 BossSearch
