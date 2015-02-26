@@ -108,14 +108,7 @@ class PlaceFinder(YahooBoss):
 
 	def __init__(self, key,secret, **kwargs):
 		super(PlaceFinder,self).__init__(key,secret,**kwargs)
-	
-		self.params = {
-			'oauth_version': "1.0",
-			'oauth_nonce': oauth.generate_nonce(),
-			'oauth_timestamp': int(time.time()),
-			'count': '1',
-			'flags': 'J'
-		}
+		self.params = {}
 
 	def placefinder(self, q):
 		self.params['q'] = urllib.quote_plus(q)
@@ -130,12 +123,22 @@ class PlaceFinder(YahooBoss):
 		return self.make_request()
 	
 	def make_request(self):
+		params = {	
+			'oauth_version': "1.0",
+			'oauth_nonce': oauth.generate_nonce(),
+			'oauth_timestamp': int(time.time()),
+			'count': '1',
+			'flags': 'J'
+		}
+
+		params.update( self.params )
+
 		bucket = 'placefinder'
 		url =  "http://yboss.yahooapis.com/geo/" + bucket
 
 		consumer = oauth.Consumer(key=self.key,secret=self.secret)
 
-		req = oauth.Request(method="GET", url=url, parameters=self.params)
+		req = oauth.Request(method="GET", url=url, parameters=params)
 	
 		signature_method = oauth.SignatureMethod_HMAC_SHA1()
 
