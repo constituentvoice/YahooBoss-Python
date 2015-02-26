@@ -105,24 +105,36 @@ class BossSearch(YahooBoss):
 
 class PlaceFinder(YahooBoss):
 	# placefinder geocoding
-	
-	def placefinder(self, q):
 
-		pparams = {
+	def __init__(self):
+	
+		self.params = {
 			'oauth_version': "1.0",
 			'oauth_nonce': oauth.generate_nonce(),
 			'oauth_timestamp': int(time.time()),
-			'q': urllib.quote_plus(q),
 			'count': '1',
 			'flags': 'J'
 		}
 
+	def placefinder(self, q):
+		self.params['q'] = urllib.quote_plus(q)
+		return self.make_request()
+
+	def lookup(self,q):
+		return self.placefinder(q)
+
+	def reverse(self, lat, lon ):
+		self.params['gflags'] = 'R'
+		self.params['location'] = urllib.quote_plus(str(lat) + ' ' + str(lon))
+		return make_request()
+	
+	def make_request(self):
 		bucket = 'placefinder'
 		url =  "http://yboss.yahooapis.com/geo/" + bucket
 
 		consumer = oauth.Consumer(key=self.key,secret=self.secret)
 
-		req = oauth.Request(method="GET", url=url, parameters=pparams)
+		req = oauth.Request(method="GET", url=url, parameters=self.params)
 	
 		signature_method = oauth.SignatureMethod_HMAC_SHA1()
 
@@ -136,3 +148,5 @@ class PlaceFinder(YahooBoss):
 			return response.get('bossresponse').get('placefinder')
 		else:
 			raise GeoCodeError( retval )
+
+
