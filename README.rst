@@ -119,11 +119,58 @@ Returns ``dict``
 
 Finds an address based on the given coordinates.
 
+Arguments:
+
+- `lat` - Latitude of the location
+- `lon` - Longitude of the location
+
+Returns ``dict``
+
+::
+
+	{
+		"count": "1", 
+		"start": "0", 
+		"request": "count=1&flags=J&gflags=R&location=32.98529%2B-96.711983&q=2435%2BN.%2BCentral%2BExpressway%252C%2BRichardson%252C%2BTX%2B75080", 
+		"results": [
+			{
+				"neighborhood": "", 
+				"house": "2435", 
+				"county": "Dallas County", 
+				"street": "N Central Expy", 
+				"radius": "400", 
+				"quality": "87", "unit": "", 
+				"city": "Richardson", 
+				"countrycode": "US", 
+				"woeid": "12790359", 
+				"xstreet": "", 
+				"line4": "United States", 
+				"line3": "", 
+				"line2": "Richardson, TX 75080-2717", 
+				"line1": "2435 N Central Expy", 
+				"state": "Texas", 
+				"latitude": "32.98529", 
+				"hash": "4289EC860C737D3F", 
+				"unittype": "", 
+				"offsetlat": "32.98529", 
+				"statecode": "TX", 
+				"postal": "75080-2717", 
+				"name": "32.98529 -96.711983", 
+				"uzip": "75080", 
+				"country": "United States", 
+				"longitude": "-96.711983", 
+				"countycode": "", 
+				"offsetlon": "-96.711983", 
+				"addressmatchtype": "POINT_ADDRESS", 
+				"woetype": "11"
+			}
+		]
+	}
+
 `placefinder( place )`
 ----------------------
 
 Alias for `lookup()` to remain compatible with 0.1.x
-
 
 ----------
 BossSearch

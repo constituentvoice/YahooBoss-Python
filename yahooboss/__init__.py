@@ -106,7 +106,8 @@ class BossSearch(YahooBoss):
 class PlaceFinder(YahooBoss):
 	# placefinder geocoding
 
-	def __init__(self):
+	def __init__(self, key,secret, **kwargs):
+		super(PlaceFinder,self).__init__(key,secret,**kwargs)
 	
 		self.params = {
 			'oauth_version': "1.0",
@@ -126,7 +127,7 @@ class PlaceFinder(YahooBoss):
 	def reverse(self, lat, lon ):
 		self.params['gflags'] = 'R'
 		self.params['location'] = urllib.quote_plus(str(lat) + ' ' + str(lon))
-		return make_request()
+		return self.make_request()
 	
 	def make_request(self):
 		bucket = 'placefinder'
